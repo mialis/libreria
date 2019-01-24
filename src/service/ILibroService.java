@@ -8,7 +8,8 @@ public interface ILibroService {
 
 	public boolean create(Libro libro);
 	public void update(Libro libro);
-	public void delete(Libro libro);
+	public void delete(int libroId);
 	List<Libro> getAll();
+	public Libro get(int libroId);
 	
 }

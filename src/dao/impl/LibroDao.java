@@ -109,14 +109,14 @@ public class LibroDao extends AbstractDao implements ILibroDao {
 
 
 	@Override
-	public void deleteLibro(Libro libro) {
+	public void deleteLibro(int libroId) {
 		
 		try (
 				Connection c = getConnection();
 				PreparedStatement ps = c.prepareStatement(DELETE_LIBRO);
 			){
 			
-			ps.setInt(1, libro.getId());
+			ps.setInt(1, libroId);
 			ps.executeUpdate();
 			
 		}catch (Exception e) {

@@ -23,6 +23,10 @@ public class LibroService implements ILibroService{
 		}
 		return true;
 	}
+	
+	public Libro get(int libroId) {
+		return libroDao.getLibro(libroId);
+	}
 
 	public List<Libro> getAll() {
 		return libroDao.getAllLibri();
@@ -34,9 +38,9 @@ public class LibroService implements ILibroService{
 		
 	}
 
-	@Override
-	public void delete(Libro libro) {
-		libroDao.deleteLibro(libro);		
+	
+	public void delete(int libroId) {
+		libroDao.deleteLibro(libroId);		
 	}
 
 }

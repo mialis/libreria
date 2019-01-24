@@ -8,9 +8,9 @@
 </head>
 <body>
 <h1> ${libro.getTitolo() } </h1>
-<h3> ${libro.getDettaglio() } </h3>
+<h3> ${libro.getDescrizione() } </h3>
 
-<a href="#">Cancella</a>
+<a href="${pageContext.request.contextPath}/LibroCancellazioneServlet?id=${id}">Cancella</a>
 <a href="#">Modifica</a>
 </body>
 </html>

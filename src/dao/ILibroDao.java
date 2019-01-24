@@ -10,7 +10,7 @@ public interface ILibroDao {
 	public Libro getLibro (int libroId);
 	public void createLibro (Libro Libro);
 	public void updateLibro (Libro Libro);
-	public void deleteLibro(Libro Libro);
+	public void deleteLibro(int libroId);
 
 }
 
