@@ -1,5 +1,7 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +16,14 @@
 		<input type="text" name="titolo"> <br>
 		<p>Descrizione</p>
 		<input type="text" name="descrizione"> <br>
-		<p>Autore_id</p>
-		<input type="number" name="autore_id">
-		<input type="submit" value="crea">
-		</form>
+		<p>Autore</p>
+		<select name="autoreId">
+			<c:forEach items="${autori}" var="autore">
+				<option value="${autore.getAutoreId()}">${autore.getNome()}   ${autore.getCognome()}</option>
+			</c:forEach>
+		</select> <input type="submit"
+			value="crea">
+	</form>
 </body>
 </html>
+

@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Libro;
+import model.Autore;
 import service.ServiceFactory;
 
 /**
@@ -29,7 +31,10 @@ public class LibroFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		List<Autore> autori = ServiceFactory.getAutoreService().getAll();
+		request.setAttribute("autori", autori);
+		
 		request.getRequestDispatcher("/WEB-INF/LibroForm.jsp").forward(request, response);
 	}
 
@@ -38,9 +43,11 @@ public class LibroFormServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Libro libro = new Libro(request.getParameter("titolo"), request.getParameter("descrizione"), Integer.parseInt(request.getParameter("autore_id")));
+		Libro libro = new Libro(request.getParameter("titolo"), request.getParameter("descrizione"), Integer.parseInt(request.getParameter("autoreId")));
+		Autore autore = ServiceFactory.getAutoreService().get(Integer.parseInt(request.getParameter("autoreId")));
 		boolean check = ServiceFactory.getLibroService().create(libro);
 		request.setAttribute("libro", libro);
+		request.setAttribute("autore", autore );
 		if(check) {
 			request.getRequestDispatcher("/WEB-INF/CreazioneLibroSuccesso.jsp").forward(request, response);
 		} else {

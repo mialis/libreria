@@ -10,6 +10,7 @@
 	<h1>Libro ${libro.getTitolo()} inserito con successo :)</h1>
 	<br>
 	<p>${libro.getDescrizione() }</p>
+	<p>Autore : ${autore.getNome() }  ${autore.getCognome() }</p>
 	<a href="${pageContext.request.contextPath}/LibroServlet">Torna
 		alla lista dei libri</a>
 	<br>

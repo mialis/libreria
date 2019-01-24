@@ -9,8 +9,7 @@ public class Autore {
 
     private String cognome;
 
-    public Autore(int autoreId, String nome, String cognome) {
-    	this.setAutoreId(autoreId);
+    public Autore(String nome, String cognome) {
     	this.setNome(nome);
     	this.setCognome(cognome);
     }
