@@ -4,10 +4,10 @@ import service.impl.LibroService;
 
 public class ServiceFactory {
 	
-	private static final ILibroService LIBROSERVICE = new LibroService();
+	private static final ILibroService LIBRO_SERVICE = new LibroService();
 
 	public static ILibroService getLibroService() {
-		return LIBROSERVICE;
+		return LIBRO_SERVICE;
 	}
 	
 	

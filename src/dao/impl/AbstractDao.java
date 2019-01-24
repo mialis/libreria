@@ -8,7 +8,7 @@ public abstract class AbstractDao {
 	public Connection getConnection() {
         try {
         	
-            Class.forName("com.mysql.jc.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/Libreria?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             return DriverManager.getConnection(url, "root", "root");
             
