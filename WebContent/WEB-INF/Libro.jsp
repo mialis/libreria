@@ -12,16 +12,17 @@
 	<h1>Lista Libri</h1>
 	<ul>
 		<c:forEach var="libro" items="${libri }">
-			<li><a href="#">${libro.getTitolo() }
-					${libro.getDescrizione() }</a></li>
+			<li>
+				<a href="${pageContext.request.contextPath}/LibroDettaglioServlet?id=${libro.getId()}">
+					titolo: ${libro.getTitolo() }
+					descrizione: ${libro.getDescrizione() }
+				</a>
+			</li>
 		</c:forEach>
 	</ul>
 
-	<form action="${pageContext.request.contextPath}/LibroFormServlet"
-		method="GET">
-		<button type="submit" name="nuovo-libro" value="nuovo-libro">NUOVO
-			LIBRO</button>
-	</form>
+	<a href="${pageContext.request.contextPath}/LibroFormServlet">Nuovo
+		Libro</a>
 </body>
 </html>
 

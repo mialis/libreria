@@ -4,13 +4,14 @@ public class Libro {
 
 	private String titolo;
 	private String descrizione;
-	private int libroId;
+	private int id;
 	private int autoreId;
 	
 	
-	public Libro(String titolo, String descrizione) {
+	public Libro(String titolo, String descrizione, int autoreId) {
 		this.setTitolo(titolo);
 		this.setDescrizione(descrizione);
+		this.setAutoreId(autoreId);
 	}
 
 	public String getTitolo() {
@@ -26,12 +27,12 @@ public class Libro {
 		this.descrizione = descrizione;
 	}
 
-	public int getLibroId() {
-		return libroId;
+	public int getId() {
+		return id;
 	}
 	
-	public void setLibroId(int libroId) {
-		this.libroId = libroId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public int getAutoreId() {

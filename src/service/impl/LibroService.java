@@ -10,17 +10,18 @@ public class LibroService implements ILibroService{
 
 	LibroDao libroDao = new LibroDao();
 	
-	public void create(String titolo, String descrizione) {
-		Libro libro = new Libro(titolo, descrizione);
+	public boolean create(Libro libro) {
 		boolean alreadyExist = false;
 		for(Libro l : libroDao.getAllLibri()) {
 			if(l.getTitolo().equalsIgnoreCase(libro.getTitolo())) {
 				alreadyExist = true;
+				return false;
 			} 
 		}
 		if (!alreadyExist) {
 			libroDao.createLibro(libro);
 		}
+		return true;
 	}
 
 	public List<Libro> getAll() {
@@ -29,13 +30,13 @@ public class LibroService implements ILibroService{
 
 	@Override
 	public void update(Libro libro) {
-		// TODO Auto-generated method stub
+		libroDao.updateLibro(libro);
 		
 	}
 
 	@Override
 	public void delete(Libro libro) {
-		// TODO Auto-generated method stub
-		
+		libroDao.deleteLibro(libro);		
 	}
+
 }

@@ -6,7 +6,7 @@ import model.Libro;
 
 public interface ILibroService {
 
-	public void create(String titolo, String descriozione);
+	public boolean create(Libro libro);
 	public void update(Libro libro);
 	public void delete(Libro libro);
 	List<Libro> getAll();

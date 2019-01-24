@@ -12,7 +12,7 @@ import model.Libro;
 
 public class LibroDao extends AbstractDao implements ILibroDao {
 	
-	private static final String CREATE_LIBRO = "INSERT INTO libro (titolo, descrizione) VALUES (?,?)";
+	private static final String CREATE_LIBRO = "INSERT INTO libro (titolo, descrizione, autore_id) VALUES (?,?,?)";
 	
     private static final String READ_LIBRO = "SELECT * FROM libro WHERE id = ?";
 
@@ -33,7 +33,8 @@ public class LibroDao extends AbstractDao implements ILibroDao {
                 ResultSet rs = ps.executeQuery();
             ) {        	
             while (rs.next()) {
-                Libro r = new Libro(rs.getString("titolo"), rs.getString("descrizione"));
+                Libro r = new Libro(rs.getString("titolo"), rs.getString("descrizione"), rs.getInt("autore_id"));
+                r.setId(rs.getInt("id"));
                 result.add(r);
             }   
             } catch (Exception e) {
@@ -53,7 +54,7 @@ public class LibroDao extends AbstractDao implements ILibroDao {
 			ps.setInt(1, libroId);
 			rs = ps.executeQuery();
 			if (rs.next() && rs!=null) {
-				libro = new Libro (rs.getString("titolo"), rs.getString("descrizione"));
+				libro = new Libro (rs.getString("titolo"), rs.getString("descrizione"), rs.getInt("autore_id"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,6 +79,7 @@ public class LibroDao extends AbstractDao implements ILibroDao {
 			
 			ps.setString(1, libro.getTitolo());
 			ps.setString(2, libro.getDescrizione());
+			ps.setInt(3, libro.getAutoreId());
 			ps.executeUpdate();
 			
 		} catch (Exception e) {
@@ -96,7 +98,7 @@ public class LibroDao extends AbstractDao implements ILibroDao {
 			
 			ps.setString(1, libro.getTitolo());
 			ps.setString(2, libro.getDescrizione());
-			ps.setInt(3, libro.getLibroId());
+			ps.setInt(3, libro.getId());
 			ps.executeUpdate();		
 			
 		} catch (Exception e) {
@@ -114,7 +116,7 @@ public class LibroDao extends AbstractDao implements ILibroDao {
 				PreparedStatement ps = c.prepareStatement(DELETE_LIBRO);
 			){
 			
-			ps.setInt(1, libro.getLibroId());
+			ps.setInt(1, libro.getId());
 			ps.executeUpdate();
 			
 		}catch (Exception e) {
