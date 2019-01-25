@@ -1,13 +1,16 @@
 package controller; 
  
-import java.io.IOException; 
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException; 
 import javax.servlet.annotation.WebServlet; 
 import javax.servlet.http.HttpServlet; 
 import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletResponse; 
  
-import model.Autore; 
+import model.Autore;
+import model.Libro;
 import service.ServiceFactory; 
  
 /** 
@@ -32,8 +35,10 @@ public class AutoreDettaglioServlet extends HttpServlet {
 			throws ServletException, IOException { 
 		
 		int id=Integer.parseInt(request.getParameter("id")); 
-		Autore autore=ServiceFactory.getAutoreService().get(id); 
+		Autore autore=ServiceFactory.getAutoreService().get(id);
+		List<Libro> libri=ServiceFactory.getLibroService().getLibroByAutoreId(id);
 		request.setAttribute("id", id); 
+		request.setAttribute("libri", libri);
 		request.setAttribute("autore", autore); 
 		request.getRequestDispatcher("/WEB-INF/AutoreDettaglio.jsp").forward(request, response); 
  

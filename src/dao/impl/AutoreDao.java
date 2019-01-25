@@ -54,7 +54,7 @@ public class AutoreDao extends AbstractDao implements IAutoreDao {
 			ps.setInt(1, autoreId);
 			rs = ps.executeQuery();
 			if (rs.next() && rs!=null) {
-				autore = new Autore (rs.getString("nome"), rs.getString("cognome"));
+				autore = new Autore (rs.getInt("id"), rs.getString("nome"), rs.getString("cognome"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

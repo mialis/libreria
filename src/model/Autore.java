@@ -13,6 +13,17 @@ public class Autore {
     	this.setCognome(cognome);
     }
     
+
+
+	public Autore(int id, String nome, String cognome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}

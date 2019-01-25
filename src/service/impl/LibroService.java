@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.impl.LibroDao;
@@ -38,9 +39,20 @@ public class LibroService implements ILibroService{
 		
 	}
 
-	
 	public void delete(int libroId) {
 		libroDao.deleteLibro(libroId);		
 	}
+	
+	@Override
+	public List<Libro> getLibroByAutoreId(int autoreId) {
+		List<Libro> libri=libroDao.getAllLibri();
+		List<Libro> libriAutore= new ArrayList<>();
+		for(Libro libro:libri) {
+			if(libro.getAutoreId()==autoreId) {
+				libriAutore.add(libro);
+			}
+		}
+		return libriAutore;
+}
 
 }

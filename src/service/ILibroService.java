@@ -11,5 +11,6 @@ public interface ILibroService {
 	public void delete(int libroId);
 	List<Libro> getAll();
 	public Libro get(int libroId);
+	List<Libro> getLibroByAutoreId(int autoreId);
 	
 }
