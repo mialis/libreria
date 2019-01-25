@@ -8,4 +8,12 @@ public interface IAutoreService {
 	
 	List<Autore> getAll();
 	Autore get(int autoreId);
+	boolean create(Autore autore); 
+	void update(Autore autore); 
+	void delete(int id); 
+	
+	 
+	 
+	 
 }
+

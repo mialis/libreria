@@ -2,8 +2,7 @@ package model;
 
 public class Autore {
 
-
-	private int autoreId;
+	private int id;
 
     private String nome;
 
@@ -14,12 +13,12 @@ public class Autore {
     	this.setCognome(cognome);
     }
     
-	public int getAutoreId() {
-		return autoreId;
+	public int getId() {
+		return id;
 	}
 
-	public void setAutoreId(int autoreId) {
-		this.autoreId = autoreId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {

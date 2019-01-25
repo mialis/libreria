@@ -3,6 +3,7 @@ package dao.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+
 public abstract class AbstractDao {    
 	
 	public Connection getConnection() {
@@ -17,5 +18,6 @@ public abstract class AbstractDao {
         }
 
     }
+
 	
 }

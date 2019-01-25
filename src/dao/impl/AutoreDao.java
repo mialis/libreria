@@ -9,11 +9,10 @@ import java.util.List;
 
 import dao.IAutoreDao;
 import model.Autore;
-import model.Libro;
 
 public class AutoreDao extends AbstractDao implements IAutoreDao {
 	
-private static final String CREATE_AUTORE = "INSERT INTO autore (nome, cognome) VALUES (?,?)";
+	private static final String CREATE_AUTORE = "INSERT INTO autore (nome, cognome) VALUES (?,?)";
 	
     private static final String READ_AUTORE = "SELECT * FROM autore WHERE id = ?";
 
@@ -35,31 +34,13 @@ private static final String CREATE_AUTORE = "INSERT INTO autore (nome, cognome) 
             ) {        	
             while (rs.next()) {
                 Autore r = new Autore(rs.getString("nome"), rs.getString("cognome"));
-                r.setAutoreId(rs.getInt("id"));
+                r.setId(rs.getInt("id"));
                 result.add(r);
             }   
             } catch (Exception e) {
             e.printStackTrace();
         }        
         return result;
-	}
-
-	@Override
-	public void createAutore(Autore autore) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateAutore(Autore autore) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAutore(int autoreId) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -89,6 +70,47 @@ private static final String CREATE_AUTORE = "INSERT INTO autore (nome, cognome) 
 		return autore;
 	}
 	
-	
+	@Override 
+	public void createAutore(Autore autore) { 
+		try ( 
+	                Connection c = getConnection(); 
+	                PreparedStatement ps = c.prepareStatement(CREATE_AUTORE); 
+	            ) { 
+	            ps.setString(1, autore.getNome()); 
+	            ps.setString(2, autore.getCognome()); 
+	            ps.executeUpdate(); 
+	        } catch (Exception e) { 
+	            e.printStackTrace(); 
+	        }	        	 
+	} 
+ 
+	@Override 
+	public void updateAutore(Autore autore) { 
+		try ( 
+				Connection c = getConnection(); 
+				PreparedStatement ps = c.prepareStatement(UPDATE_AUTORE); 
+				){ 
+			ps.setString(1, autore.getNome()); 
+			ps.setString(2, autore.getCognome()); 
+			ps.setInt(3, autore.getId()); 
+			ps.executeUpdate(); 
+		} catch (Exception e) { 
+			e.printStackTrace(); 
+		} 
+	} 
+ 
+	@Override 
+	public void deleteAutore(int id) { 
+		try ( 
+				Connection c = getConnection(); 
+				PreparedStatement ps = c.prepareStatement(DELETE_AUTORE); 
+				){ 
+			ps.setInt(1, id); 
+			ps.executeUpdate(); 
+			 
+		} catch (Exception e) { 
+			e.printStackTrace(); 
+		} 
+	} 
 
 }

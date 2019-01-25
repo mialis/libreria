@@ -12,5 +12,4 @@ public interface IAutoreDao {
 	public void updateAutore (Autore autore);
 	public void deleteAutore(int autoreId);
 
-
 }

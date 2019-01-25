@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.impl.LibroDao;
 import model.Libro;
 import service.ServiceFactory;
 
@@ -23,7 +22,6 @@ public class LibroCancellazioneServlet extends HttpServlet {
      */
     public LibroCancellazioneServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

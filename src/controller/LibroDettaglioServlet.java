@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.impl.LibroDao;
+import model.Autore;
 import model.Libro;
 import service.ServiceFactory;
 
@@ -30,11 +30,16 @@ public class LibroDettaglioServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		Libro libro = ServiceFactory.getLibroService().get(id);
-		request.setAttribute("libro", libro);
+		Autore autore = ServiceFactory.getAutoreService().get(libro.getAutoreId());
 		request.setAttribute("id", id);
+		request.setAttribute("libro", libro);
+		request.setAttribute("autore", autore);
+		//TODO add autore, recensioni, genere
+		
+		
 		
 		request.getRequestDispatcher("/WEB-INF/LibroDettaglio.jsp").forward(request, response);
 	}
