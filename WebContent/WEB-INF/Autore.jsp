@@ -20,6 +20,7 @@
 			</li> 
 		</c:forEach> 
 	</ul> 
+	<a href="https://d2xcq4qphg1ge9.cloudfront.net/assets/529395/3657888/original_Cartel1.pdf">SCARICAMI</a>
  
 	<a href="${pageContext.request.contextPath}/AutoreFormServlet">
 	Nuovo Autore</a> 
